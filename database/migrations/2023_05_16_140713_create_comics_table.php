@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('title');
             $table->text('description')->nullable();
             $table->string('thumb')->default('');
-            $table->decimal('price', 5, 2)->nullable();
+            $table->Integer('price')->nullable();
             $table->string('series');
             $table->date('sale_date')->nullable();
             $table->string('type');
