@@ -16,9 +16,6 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#">Heros</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link">News</a>
-                </li>
             </ul>
         </div>
     </div>
