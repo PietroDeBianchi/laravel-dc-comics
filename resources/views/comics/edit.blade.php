@@ -36,7 +36,7 @@
             </div>
             <div class="mb-3">
                 <label for="type" class="form-label">Type:</label>
-                <input type="text" class="form-control" id="type" name="type">
+                <input type="text" class="form-control" id="type" name="type" value="{{$comic->type}}">
             </div>
             <div class="mb-3">
                 <label for="sale_date" class="form-label">Release Dte:</label>

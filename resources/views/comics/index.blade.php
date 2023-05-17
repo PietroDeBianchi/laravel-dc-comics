@@ -24,7 +24,8 @@
                     <form action="{{route('comics.destroy', ['comic'=> $comic->id])}}" method="POST">
                         @csrf
                         @method('DELETE')
-                        <button tyep="submit" class="btn btn-danger">Destroy!</button>
+                        {{-- <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this?')">Destroy!</button> --}}
+                        <button type="button" class="btn btn-danger" data-toggle="confirmation" data-title="Are you sure?" data-message="This action cannot be undone.">Delete</button>
                     </form>
                 </td>
             </tr>
