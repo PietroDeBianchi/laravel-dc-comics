@@ -37,13 +37,24 @@ class ComicController extends Controller
      */
     public function store(Request $request)
     {
+        // validation data
+        $request->validate([
+            'title' => 'required|max:225',
+            'description' => 'nullable|max:650',
+            'thumb' => 'required|url|max:255',
+            'price' => 'required|numeric|decimal:2',
+            'series' => 'required|max:100',
+            'sale_date' => 'required|max:50',
+            'type' => 'required|max:50'
+        ]);
+
+
         $data = $request->all();
 
         $newComic = new Comic();
-
         //look App/Models/Comic
         $newComic->fill($data);
-        // fill()-> to that:
+        // fill() is equal to ->
         //  $newComic->title = $data['title'];
         //  $newComic->description = $data['description'];
         //  $newComic->thumb = $data['thumb'];
