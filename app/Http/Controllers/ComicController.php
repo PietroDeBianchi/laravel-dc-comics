@@ -42,7 +42,7 @@ class ComicController extends Controller
             'title' => 'required|max:225',
             'description' => 'nullable|max:650',
             'thumb' => 'required|url|max:255',
-            'price' => 'required|numeric|decimal:2',
+            'price' => 'required|numeric',
             'series' => 'required|max:100',
             'sale_date' => 'required|max:50',
             'type' => 'required|max:50'
@@ -99,9 +99,20 @@ class ComicController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Comic $comic) // <= (..., Comic $comic) = ($comic = Comic::findOrFail($id);)
     {
-        $comic = Comic::findOrFail($id);
+        // validation data
+        $request->validate([
+            'title' => 'required|max:225',
+            'description' => 'nullable|max:650',
+            'thumb' => 'required|url|max:255',
+            'price' => 'required|numeric',
+            'series' => 'required|max:100',
+            'sale_date' => 'required|max:50',
+            'type' => 'required|max:50'
+        ]);
+
+
         $data = $request->all();
         $comic->update($data);
 

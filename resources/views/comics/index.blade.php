@@ -20,11 +20,11 @@
                 <td>{{$comic->series}}</td>
                 <td class="d-flex">
                     <a href="{{route('comics.show', ['comic' => $comic->id])}}" class="btn btn-primary">See Details</a>
-                    <a href="{{route('comics.edit', ['comic'=> $comic->id])}}" class="btn btn-warning mx-2">Up Date!</a>
+                    <a href="{{route('comics.edit', ['comic'=> $comic->id])}}" class="btn btn-warning mx-2">Edit</a>
                     <form action="{{route('comics.destroy', ['comic'=> $comic->id])}}" method="POST">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this?')">Destroy!</button>
+                        <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this?')"><i class="fa-solid fa-trash-can"></i></button>
                         {{-- <button type="submit" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">Destroy!</button> --}
                         {{-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
@@ -51,7 +51,7 @@
 </table>
 
 <div>
-    <a href="{{route('comics.create')}}">Add new Comic!</a>
+    <a class="btn btn-secondary" href="{{route('comics.create')}}">Add new Comic!</a>
 </div>
 
 @endsection
