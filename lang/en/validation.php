@@ -155,14 +155,6 @@ return [
     |
     */
 
-    'attributes' => [
-        'title'                 => 'Il titolo',
-        'description'           => 'La descrizione',
-        'thumb'                 => 'Il link',
-        'price'                 => 'Il prezzo',
-        'series'                => 'La serie',
-        'sale_date'             => 'La data di rilascio',
-        'type'                  => 'La tipologia',
-    ],
+    'attributes' => [],
 
 ];

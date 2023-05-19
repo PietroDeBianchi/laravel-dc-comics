@@ -81,7 +81,7 @@ class ComicController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Comic $comic) // <= (..., Comic $comic) = ($comic = Comic::findOrFail($id);)
+    public function update(StoreComicRequest $request, Comic $comic) // <= (..., Comic $comic) = ($comic = Comic::findOrFail($id);)
     {
         // validation data
         // $request->validate([
@@ -93,12 +93,10 @@ class ComicController extends Controller
         //     'sale_date' => 'required|max:50',
         //     'type' => 'required|max:50'
         // ]);
-
-
-        $data = $request->all();
+        $data = $request->validated();
         $comic->update($data);
 
-        return redirect()->route('comics.show', ['comic' => $comic->id]);
+        return redirect()->route('comics.show', ['comic' => $comic->id])->with('status-positive', 'File aggiornato correttamente!');
     }
 
     /**
