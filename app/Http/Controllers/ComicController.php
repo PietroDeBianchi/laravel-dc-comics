@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreComicRequest;
 use App\Models\Comic;
-use COM;
 use Illuminate\Http\Request;
 
 class ComicController extends Controller
@@ -35,25 +35,18 @@ class ComicController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreComicRequest $request)
     {
 
-        $data = $request->all();
+        $data = $request->validated();
 
         $newComic = new Comic();
-        //look App/Models/Comic
+
         $newComic->fill($data);
-        // fill() is equal to ->
-        //  $newComic->title = $data['title'];
-        //  $newComic->description = $data['description'];
-        //  $newComic->thumb = $data['thumb'];
-        //  $newComic->price = $data['price'];
-        //  $newComic->series = $data['series'];
-        //  $newComic->sale_date = $data['sale_date'];
-        //  $newComic->type = $data['type'];
+
         $newComic->save();
 
-        return redirect()->route('comics.show', ['comic' => $newComic->id]);
+        return redirect()->route('comics.show', ['comic' => $newComic->id])->with('status-positive', 'Hai creato correttamente il fumetto!');
     }
 
     /**
